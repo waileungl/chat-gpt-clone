@@ -16,6 +16,10 @@ body {
     --send-icon-color: rgba(142,142,160);
 }
 
+input::placeholder {
+    color: var(--send-icon-color) !important;
+}
+
 .chat-wrapper {
     margin:0 auto;
     flex-basis: 400px;
@@ -87,4 +91,42 @@ body {
     height: 20px;
 }
 
+.message-wrapper {
+    display: flex;
+    padding: 16px 0;
+}
 
+
+.message-wrapper.reverse {
+    flex-direction: row-reverse;
+}
+
+.message-wrapper.reverse .message {
+    background-color: var(--message-bg);
+    color: #fff;
+    margin-left: auto;
+    border-radius: 16px 0 16px 16px;
+}
+
+.message-wrapper.reverse .name {
+    text-align: right;
+}
+
+.name {
+    margin: 0;
+    line-height: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--message-text);
+}
+
+.message {
+    margin-top: 8px;
+    background-color: var(--message-bg);
+    padding: 8px 16px;
+    border-radius: 0 12px 12px 12px;
+    font-size: 16px;
+    line-height: 16px;
+    /* max-width: calc(100% - 32px); */
+    color: var(--message-text);
+}

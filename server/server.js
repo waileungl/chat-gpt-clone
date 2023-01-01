@@ -11,7 +11,8 @@ const port = 8000
 
 
 const configuration = new Configuration({
-    apiKey: "process.env.API_KEY",
+    // apiKey: process.env.API_KEY
+    apiKey: "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"
 });
 const openai = new OpenAIApi(configuration);
 
@@ -22,24 +23,19 @@ app.use(express.json());
 
 app.get('/', async (req, res) => {
     res.status.send({
-        message: 'hello World!'
+        message: 'Hello from William!'
     })
 })
 
 app.post('/', async (req, res) => {
     try {
         const prompt = req.body.prompt
-
         const response = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: `${prompt}`,
+            max_tokens: 2000,
             temperature: 0,
-            max_tokens: 1000,
-            top_p: 1,
-            frequency_penalty: 0.5,
-            presence_penalty: 0,
         });
-
         res.status(200).send({
             ai:response.data.choices[0].text
         })
