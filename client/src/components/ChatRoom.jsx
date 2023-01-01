@@ -1,11 +1,24 @@
-import send from '../assets/send.svg'
-
+import { IoMdSend } from 'react-icons/io';
+import axios from 'axios';
 
 const Chat = () => {
+    const submitHandler = (e) => {
+        e.preventDefault();
+        axios
+            .post('http://localhost:8000')
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     return (
-        <>
-            <div className='chat-area'>
-                {/* {messages.map((message, index) =>
+        <div className='chat-wrapper'>
+            <div className='chat-container'>
+                <div className='chat-area'>
+                    {/* {messages.map((message, index) =>
                     <div key={index} className="message-wrapper" ref={index === messages.length - 1 ? lastMessageRef : null}>
                             <div className="message-content">
                                 <p className="name"></p>
@@ -13,30 +26,19 @@ const Chat = () => {
                             </div>
                     </div>
                 )} */}
-            </div>
-            <form onSubmit="" className="chat-typing-area-wrapper">
-                <div className="chat-typing-area">
-                    <input
-                        placeholder="Type your message..."
-                        className='chat-input'
-                    />
-                    <button className="send-button">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="feather feather-send"
-                            viewBox="0 0 24 24"
-                        >
-                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-                        </svg>
-                    </button>
                 </div>
-            </form>
-        </>
+                <form onSubmit={submitHandler} className="chat-typing-area-wrapper">
+                    <div className="chat-typing-area">
+                        <input
+                            className='chat-input'
+                        />
+                        <button className="send-button">
+                            <IoMdSend />
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     )
 }
 
