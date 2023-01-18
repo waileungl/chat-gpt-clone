@@ -53,8 +53,8 @@ const Chat = () => {
                     {messages.map((message, index) =>
                         <div key={index} className="message-wrapper" ref={index === messages.length - 1 ? lastMessageRef : null}>
                             <div className="message-content">
-                                <p className="name">Test</p>
-                                <div className="message">{message.text}</div>
+                                <p className="my-name">Test</p>
+                                <div className="my-message">{message.text}</div>
                             </div>
                         </div>
                     )}
@@ -67,7 +67,7 @@ const Chat = () => {
                             placeholder='Ask me anything..'
                             onChange={(e) => setText(e.target.value)}
                         />
-                        <button className="send-button">
+                        <button className="send-msg-button">
                             <IoMdSend />
                         </button>
                     </div>

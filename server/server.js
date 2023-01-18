@@ -1,7 +1,5 @@
-const OpenAI = require('openai');
-const { Configuration, OpenAIApi } = OpenAI;
-const dotenv = require('dotenv');
-dotenv.config()
+const { Configuration, OpenAIApi } = require('openai');
+require('dotenv').config();
 
 const express = require('express')
 const cors = require('cors');
@@ -11,8 +9,8 @@ const port = 8000
 
 
 const configuration = new Configuration({
-    // apiKey: process.env.API_KEY
-    apiKey: "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"
+    apiKey: process.env.API_KEY
+    // apiKey: "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"
 });
 const openai = new OpenAIApi(configuration);
 
@@ -30,17 +28,19 @@ app.get('/', async (req, res) => {
 app.post('/', async (req, res) => {
     try {
         const prompt = req.body.prompt
+        // console.log(require("dotenv").config())
+        // console.log(process.env);
         const response = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: `${prompt}`,
-            max_tokens: 2000,
+            max_tokens: 100,
             temperature: 0,
         });
         res.status(200).send({
             ai:response.data.choices[0].text
         })
     } catch (err) {
-        console.log('Error to provide response', err)
+        // console.log('Error to provide response', err)
         res.status(500).send({ err })
     }
 })
