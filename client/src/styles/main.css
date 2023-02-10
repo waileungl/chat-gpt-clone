@@ -123,6 +123,7 @@ form {
     flex-direction: row;
     gap: 10px;
     align-items: center;
+    margin: 0px 0px 10px 0px;
 }
 
 textarea {

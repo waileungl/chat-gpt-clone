@@ -120,7 +120,7 @@ const Chat = () => {
             console.log(user_prompt)
         }
 
-        axios.post('https://personal-portfolio-waileungl.vercel.app/', { prompt: user_prompt }, {
+        axios.post('https://aiserver.wlliu.com/', { prompt: user_prompt }, {
             headers: {
                 'Content-Type': 'application/json'
             }
