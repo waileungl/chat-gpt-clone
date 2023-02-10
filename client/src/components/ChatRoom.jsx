@@ -29,7 +29,6 @@ const Chat = () => {
 
     useEffect(() => {
         setHeight(`${textareaRef.current.scrollHeight}px`);
-        console.log(height)
     }, [text]);
 
     let loadInterval;
@@ -114,20 +113,20 @@ const Chat = () => {
         if (dialog === "") {
             user_prompt = initial_prompt + text + "; River say:"
             dialog = user_prompt
-            console.log(user_prompt)
+            // console.log(user_prompt)
         } else {
             user_prompt = dialog + "; I say:" + text + "; You say:"
-            console.log(user_prompt)
+            // console.log(user_prompt)
         }
 
-        axios.post('https://aiserver.wlliu.com/', { prompt: user_prompt }, {
+        axios.post('https://riverai.wlliu.com/', { prompt: user_prompt }, {
             headers: {
                 'Content-Type': 'application/json'
             }
         })
             .then(res => {
                 let response = ""
-                console.log(res);
+                // console.log(res);
                 response = res.data.ai;
                 clearInterval(loadInterval)
                 messageDiv.innerHTML = " "
@@ -139,12 +138,19 @@ const Chat = () => {
                 }
             })
             .catch(err => {
-                console.log('fail to get response from server', err);
+                // console.log('fail to get response from server', err);
             });
 
         // to clear the textarea input 
         setText('')
     }
+
+    const handleKeyDown = (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            handleSubmit(event);
+        }
+    };
 
 
     return (
@@ -166,7 +172,9 @@ const Chat = () => {
                     value={text}
                     style={{ height }}
                     ref={textareaRef}
-                    onInput={handleInput}></textarea>
+                    onInput={handleInput}
+                    onKeyDown={handleKeyDown}
+                ></textarea>
                 <button type="submit" className='send-button' id='send_button'><IoMdSend /></button>
             </form>
         </div>
