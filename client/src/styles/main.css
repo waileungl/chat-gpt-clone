@@ -8,75 +8,194 @@
 }
 
 body {
-    --main-color: rgba(52,53,65);
-    --message-bg: rgba(64,65,79);
-    --message-text: rgba(255, 255, 255, 0.8);
-    --placeholder-text: #fff;
-    --chat-background: rgba(52,53,65);
-    --send-icon-color: rgba(142,142,160);
+    background: #343541;
 }
 
-input::placeholder {
-    color: var(--send-icon-color) !important;
-}
-
-.chat-wrapper {
-    margin:0 auto;
-    flex-basis: 400px;
+#app {
+    width: 100vw;
     height: 100vh;
-    /* padding: 16px 16px 16px 16px; */
-    position: relative;
-    /* transition: all 300ms cubic-bezier(0.19, 1, 0.56, 1); */
-}
+    background: #343541;
 
-.chat-container {
-    background-color: var(--chat-background);
     display: flex;
     flex-direction: column;
-    height: 100%;
-}
-
-
-.chat-area {
-    flex: 1;
-    overflow-y: auto;
-    padding: 16px;
-}
-
-.chat-typing-area-wrapper {
-    margin: 0 auto;
-    width: 60%;
-    padding: 16px;
-}
-
-.chat-typing-area {
-    display: flex;
     align-items: center;
-    border-radius: 10px;
-    padding: 8px;
-    /* box-shadow: var(--navigation-box-shadow); */
-    background-color: var(--message-bg);
+    justify-content: space-between;
 }
 
-.chat-input {
-    border: none;
-    height: 45px;
-    font-size: 22px;
-    line-height: 24px;
-    outline: none;
-    color: var(--message-text);
+#chat_container {
     flex: 1;
-    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
 }
 
-.chat-input::placeholder {
-    color: var(--placeholder-text);
+/* hides scrollbar */
+#chat_container::-webkit-scrollbar {
+    display: none;
+}
+
+.wrapper {
+    width: 100%;
+    padding: 15px;
+}
+
+.ai {
+    background: #40414F;
+}
+
+.chat {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.profile {
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+
+    background: #5436DA;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ai .profile {
+    background: #10a37f;
+}
+
+.profile img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.message {
+    flex: 1;
+
+    color: #dcdcdc;
+    font-size: 20px;
+
+    max-width: 100%;
+    overflow-x: scroll;
+
+    /*
+   * white space refers to any spaces, tabs, or newline characters that are used to format the CSS code
+   * specifies how white space within an element should be handled. It is similar to the "pre" value, which tells the browser to treat all white space as significant and to preserve it exactly as it appears in the source code.
+   * The pre-wrap value allows the browser to wrap long lines of text onto multiple lines if necessary.
+   * The default value for the white-space property in CSS is "normal". This tells the browser to collapse multiple white space characters into a single space, and to wrap text onto multiple lines as needed to fit within its container.
+  */
+    white-space: pre-wrap;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* hides scrollbar */
+.message::-webkit-scrollbar {
+    display: none;
+}
+
+form {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 10px;
+    background: #40414F;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+textarea {
+    width: 100%;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: auto;
+    word-wrap: break-word;
+    line-height: 1.5;
+    min-height: 2em;
+    max-height: 25em;
+}
+
+button {
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    background: transparent;
+}
+
+form img {
+    width: 30px;
+    height: 30px;
+}
+
+
+/*==================== Scroll bar ====================*/
+/* Style the scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    /* Width of the scrollbar */
+    height: 10px;
+    /* Height of the scrollbar */
+}
+
+/* Style the thumb (the moving part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+    background: #b3b3b37c;
+    /* Background color of the thumb */
+    border-radius: 10px;
+
+    /* Round the corners of the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    /* Background color of the thumb */
+    border-radius: 10px;
+    /* Round the corners of the thumb */
+}
+
+/* Style the track (the background of the scrollbar) */
+::-webkit-scrollbar-track {
+    background-color: none;
+    /* background: var(--chat-background); */
+    /* Background color of the track */
+}
+
+/* Style the buttons (the arrows that allow you to move the scrollbar up and down) */
+::-webkit-scrollbar-button {
+    display: none;
+    /* Hide the buttons */
 }
 
 
 .send-button {
-    color: var(--send-icon-color);
-    background-color: var(--message-bg);
+    color: #fff;
+    background-color: #5436DA;
     border-radius: 8px;
     border: none;
     width: 32px;
@@ -84,49 +203,4 @@ input::placeholder {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.send-button svg {
-    width: 20px;
-    height: 20px;
-}
-
-.message-wrapper {
-    display: flex;
-    padding: 16px 0;
-}
-
-
-.message-wrapper.reverse {
-    flex-direction: row-reverse;
-}
-
-.message-wrapper.reverse .message {
-    background-color: var(--message-bg);
-    color: #fff;
-    margin-left: auto;
-    border-radius: 16px 0 16px 16px;
-}
-
-.message-wrapper.reverse .name {
-    text-align: right;
-}
-
-.name {
-    margin: 0;
-    line-height: 16px;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--message-text);
-}
-
-.message {
-    margin-top: 8px;
-    background-color: var(--message-bg);
-    padding: 8px 16px;
-    border-radius: 0 12px 12px 12px;
-    font-size: 16px;
-    line-height: 16px;
-    /* max-width: calc(100% - 32px); */
-    color: var(--message-text);
 }

@@ -10,7 +10,6 @@ const port = 8000
 
 const configuration = new Configuration({
     apiKey: process.env.API_KEY
-    // apiKey: "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"////
 });
 const openai = new OpenAIApi(configuration);
 
@@ -33,7 +32,7 @@ app.post('/', async (req, res) => {
         const response = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: `${prompt}`,
-            max_tokens: 100,
+            max_tokens: 10000,
             temperature: 0,
         });
         res.status(200).send({

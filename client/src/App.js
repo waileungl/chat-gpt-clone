@@ -1,4 +1,3 @@
-import './App.css';
 import './styles/main.css'
 import Chat from './components/ChatRoom';
 
